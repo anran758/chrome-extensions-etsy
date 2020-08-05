@@ -1,0 +1,27 @@
+{
+  "name": "Esty download plugin",
+  "version": "1.0",
+  "description": "Esty 文件批量下载",
+  "background": {
+    "page": "background.html"
+  },
+  "manifest_version": 2,
+  "permissions": [
+    "storage",
+    "declarativeContent",
+    "activeTab",
+    "notifications",
+    "downloads",
+    "*://*/*"
+  ],
+  "content_scripts": [],
+  "browser_action": {
+    "default_title": "Esty download plugin",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "images/icon.png",
+    "48": "images/icon.png",
+    "128": "images/icon.png"
+  }
+}

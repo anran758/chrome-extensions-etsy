@@ -1,2 +1,3 @@
 # chrome-extensions-etsy
-download etsy file
+
+Esty 批量下载文件
