@@ -29,6 +29,7 @@ const getTemplatePath = (filePath) => {
 
 /**
  * 将指定目录下的 HTML 封装为插件
+ * @Tips 或许将 entry 与 template 拆分生成会更好
  */
 const getHtmlOptions = (folderPath) => {
   const tempFolderPath = folderPath || conf.templateFolder;
@@ -45,7 +46,7 @@ const getHtmlOptions = (folderPath) => {
     const tempPath = getTemplatePath(path.join(tempFolderPath, filename));
 
     const entryPath = path.join(conf.srcRoot, 'js', `${name}.js`);
-    const chunkname = `js/${name}`;
+    const chunkname = `${name}`;
     if (fs.existsSync(entryPath)) {
       entry[chunkname] = entryPath;
     }

@@ -6,6 +6,7 @@ module.exports = merge(common, {
   mode: "production",
   output: {
     path: path.join(__dirname, "../dist"),
-    filename: "[name].js",
+    filename: "js/[name].[hash].js",
+    chunkFilename: 'js/[name].bundle.js',
   },
 });

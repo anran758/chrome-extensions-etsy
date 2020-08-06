@@ -2,6 +2,7 @@ const path = require("path");
 const TerserPlugin = require('terser-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 const { merge } = require('webpack-merge');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const { getHtmlOptions } = require("./get-html.js");
 
@@ -11,12 +12,19 @@ module.exports = merge({
       {
         exclude: /node_modules/,
         test: /\.less$/,
+
         use: [
-          { loader: "style-loader", },
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: false,
+            },
+          },
           { loader: "css-loader", },
           { loader: "less-loader", },
         ],
       },
+      { test: /\.js(x)$/, exclude: /node_modules/, loader: "babel-loader" }
     ],
   },
 
@@ -47,6 +55,11 @@ module.exports = merge({
   },
 
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[chunkhash:8].css',
+      chunkFilename: 'css/[name].[chunkhash:8].css',
+    }),
+
     new CopyPlugin({
       patterns: [
         { from: path.resolve(__dirname, '../public'), },
