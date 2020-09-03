@@ -1,1 +1,1 @@
-console.log('Hello Popup!')
+import '../pages/popup.jsx';
